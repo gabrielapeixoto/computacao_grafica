@@ -105,7 +105,7 @@ void PolygonDraw(void){
 	glPolygonMode(GL_FRONT_AND_BACK, tipoPoligono);
 
 	glBegin(GL_POLYGON);
-	for(i = 0; i < NPOLYGON; i += menuItem){
+	for(i = 0; i < NPOLYGON; i++){
 		glVertex2fv(pvertex[i].v);
 	}
 	glEnd();
@@ -117,7 +117,7 @@ void PointDraw (void){
 	glPointSize(3);
 	glBegin(GL_POINTS);
 
-	for(i = 0; i < NPOLYGON; i += menuItem){
+	for(i = 0; i < NPOLYGON; i++){
 		glVertex2fv(pvertex[i].v);
 	} 
 	glEnd();  
@@ -182,16 +182,17 @@ static void Args(int argc, char **argv){
 }
 
 void createGLUTMenus() {
-	int menu,submenu;
+	int menu, submenu;
 
 	submenu = glutCreateMenu(proceverticeSubMenuEvents);
-	glutAddMenuEntry("Polígono",1);
-	glutAddMenuEntry("Triângulo",2);
-	glutAddMenuEntry("Retângulo",3);
+	glutAddMenuEntry("Rotacionar", 5);
+	glutAddMenuEntry("Escalar", 6);
+	glutAddMenuEntry("Transladar", 7);
+	glutAddMenuEntry("Cisalhar", 8);
 
 	menu = glutCreateMenu(proceverticeMenuEvents);
 	glutAddMenuEntry("Linha/Prenchido",4);
-	glutAddSubMenu("Tipo Poligono",submenu);
+	glutAddSubMenu("Transfomações", submenu);
 	glutAttachMenu(GLUT_RIGHT_BUTTON);
 }
 
