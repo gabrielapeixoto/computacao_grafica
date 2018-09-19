@@ -8,6 +8,11 @@
 #define NPOLYGON 6
 #define PHI 3.141572
 
+#define ROTACIONAR 1
+#define ESCALAR 2
+#define TRANSLADAR 3
+#define CISALHAR 4
+
 GLenum doubleBuffer;   
  
 struct polygon {
@@ -185,20 +190,19 @@ void createGLUTMenus() {
 	int menu, submenu;
 
 	submenu = glutCreateMenu(proceverticeSubMenuEvents);
-	glutAddMenuEntry("Rotacionar", 5);
-	glutAddMenuEntry("Escalar", 6);
-	glutAddMenuEntry("Transladar", 7);
-	glutAddMenuEntry("Cisalhar", 8);
+	glutAddMenuEntry("Rotacionar", ROTACIONAR);
+	glutAddMenuEntry("Escalar", ESCALAR);
+	glutAddMenuEntry("Transladar", TRANSLADAR);
+	glutAddMenuEntry("Cisalhar", CISALHAR);
 
 	menu = glutCreateMenu(proceverticeMenuEvents);
-	glutAddMenuEntry("Linha/Prenchido",4);
-	glutAddSubMenu("Transfomações", submenu);
+	glutAddSubMenu("Transfomacoes", submenu);
 	glutAttachMenu(GLUT_RIGHT_BUTTON);
 }
 
 void motionMouse(int x, int y){
 	glColor3f(0.0, 1.0, 0.0);
-	glPointSize(3);
+	/*glPointSize(3);*/
 	glBegin(GL_POINTS); 				
 		x = x - windW;
 		y = windH - y;
