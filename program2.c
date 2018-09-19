@@ -25,7 +25,7 @@ typedef struct polygon
 typePolygon pvertex[MAXVERTEXS];
 
 int windW, windH;       // horizontal e vertical da janela
-int gOpcao;                 // operacao escolhido no menu
+int gOpcao;             // operacao escolhido no menu
 int tipoPoligono;
 int gIndVert = -1;      // indicador do vértice manipulado
 int numPontos = 0;
@@ -33,29 +33,22 @@ int gXant, gYant;		// posicao (x, y) anterior
 
 float **MM;		// matriz generico
 
-float Mt[3][3] = {{1.0, 0.0, 0.0},
-			{0.0, 1.0, 0.0},
-			{0.0, 0.0, 1.0}};
-float Mr[3][3] = {{1.0, 0.0, 0.0},
-			{0.0, 1.0, 0.0},
-			{0.0, 0.0, 1.0}};
-float Ms[3][3] = {{1.0, 0.0, 0.0},
-			{0.0, 1.0, 0.0},
-			{0.0, 0.0, 1.0}};
+float Mt[3][3] = {{1.0, 0.0, 0.0}, {0.0, 1.0, 0.0}, {0.0, 0.0, 1.0}};
+float Mr[3][3] = {{1.0, 0.0, 0.0}, {0.0, 1.0, 0.0}, {0.0, 0.0, 1.0}};
+float Ms[3][3] = {{1.0, 0.0, 0.0}, {0.0, 1.0, 0.0}, {0.0, 0.0, 1.0}};
 			
-void circulo(float r, float ang, float pp[3])
-{
+void circulo(float r, float ang, float pp[3]){
 	pp[0] = (float)(r * cos(ang));
 	pp[1] = (float)(r * sin(ang));
 	pp[2] = (float)1.0;
 }
 
 
-int clipVertex(int x, int y)
-{
+int clipVertex(int x, int y){
 	int i;
 	float d;
-	gIndVert=-1;   printf("\n clipVertex (%d, %d) ", x, y); 
+	gIndVert=-1;   
+	printf("\n clipVertex (%d, %d) ", x, y); 
 	for (i=0; i<NVERTICE; i++) {
 		d = sqrt(pow((pvertex[i].v[0]-x), 2.0) + pow((pvertex[i].v[1]-y), 2.0));
 		if(d < 3.0){
@@ -242,7 +235,7 @@ float anguloRotacao(int vx, int vy) {
 	
 	prodVetor = (float)vx*gXant + (float)vy*gYant;
 	
-	printf("\n numera: %6.4, denum: %6.4 ", prodVetor, prodNorma);
+	printf("\n numera: %6.4f, denum: %6.4f	 ", prodVetor, prodNorma);
 	
 	ang = acos(prodVetor/prodNorma);
 	
@@ -299,7 +292,7 @@ void motionMouse(int x, int y)
 			if(gOpcao == ROTACAO) {
 				ang = anguloRotacao(x, y);
 				transRota(ang); 
-				printf (" -- Ang: %6.4", ang);
+				printf (" -- Ang: %6.4f", ang);
 			}
 		}
 		
